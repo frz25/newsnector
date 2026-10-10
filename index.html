@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewsNectar — Your AI Daily News Manager</title>
+  <meta name="description" content="Wake up to a ready-to-read carousel every morning. NewsNectar researches, summarizes, and prepares tomorrow's news while you sleep.">
+
+  <!-- Google Fonts: Bebas Neue, Outfit, Space Mono, Caveat, Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for sleek icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-brutalist-theme">
+
+  <!-- TOP UTILITY BAR (SHOOKS STYLE) -->
+  <div class="top-utility-bar">
+    <div class="utility-container">
+      <a href="#" class="utility-link">POWERED BY NEWSNECTAR.AI</a>
+    </div>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- MAIN HEADER NAVIGATION -->
+    <header class="app-header">
+      <div class="header-container">
+        <!-- Logo Branding (Square with Diamond Icon) -->
+        <a href="/" class="brand-logo" id="brandLogo">
+          <div class="logo-square-icon">
+            <div class="inner-diamond"></div>
+          </div>
+          <span class="brand-title">NEWSNECTAR</span>
+        </a>
+
+        <!-- Right Navigation Menu Links -->
+        <nav class="header-nav-links">
+          <a href="#carousel" class="nav-link">CAROUSEL</a>
+          <a href="#workflow" class="nav-link">WORKFLOW</a>
+          <a href="#sectors" class="nav-link">SECTORS</a>
+          <a href="#honeycomb" class="nav-link">HONEYCOMB</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="action-btn-saved" id="bookmarksToggleBtn">
+            SAVED (<span id="bookmarkCount">0</span>)
+          </button>
+          <button class="action-btn-primary" id="getStartedBtn">
+            GET STARTED
+          </button>
+          <button class="action-btn-icon" id="settingsBtn" title="AI Settings">
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION WITH GIANT WATERMARK & 3D ARC CAROUSEL -->
+    <section class="hero-section">
+      <!-- Faint Giant Background Watermark Text -->
+      <div class="hero-watermark">NEWSNECTAR</div>
+
+      <div class="hero-container">
+        <!-- Top Monospace Badge -->
+        <div class="hero-badge-pill">
+          <span class="pulse-square">■</span>
+          <span class="badge-text">YOUR AI DAILY NEWS MANAGER · DISTILLED IN REAL-TIME</span>
+        </div>
+
+        <!-- Main High-Impact Typography Headline (Shooks Style) -->
+        <h1 class="hero-headline">
+          Wake up to a <span class="script-accent-text">ready-to-read</span><br>
+          <span class="condensed-title">CAROUSEL EVERY MORNING.</span>
+        </h1>
+
+        <!-- Subtitle Description -->
+        <p class="hero-subtitle">
+          No manual searching. No endless scrolling. Your AI Daily News Manager researches, summarizes, translates, and prepares tomorrow's essential stories while you sleep.
+        </p>
+
+        <!-- CTA Buttons & Checkmarks -->
+        <div class="hero-cta-group">
+          <a href="#carousel" class="cta-primary-btn">GET TOMORROW'S CAROUSEL</a>
+          <a href="#workflow" class="cta-secondary-btn">HOW IT WORKS</a>
+        </div>
+
+        <ul class="hero-checkmark-list">
+          <li><span class="check-icon">✓</span> Fresh daily news researched automatically</li>
+          <li><span class="check-icon">✓</span> AI-written bullet summaries included</li>
+          <li><span class="check-icon">✓</span> Contextual AI assistant for every story</li>
+          <li><span class="check-icon">✓</span> Hands-free audio reader playback</li>
+          <li><span class="check-icon">✓</span> Prepared before your workday begins</li>
+          <li><span class="check-icon">✓</span> Read, listen, interact & share</li>
+        </ul>
+
+        <!-- 3D CURVED FAN ARC CAROUSEL WHEEL -->
+        <div class="arc-carousel-section" id="carousel">
+          <div class="arc-header-bar">
+            <span class="mono-label">01 / DAILY CAROUSEL FAN</span>
+            <h3 class="arc-section-title">TRENDING DAILY DROPS</h3>
+          </div>
+
+          <div class="arc-carousel-wrapper">
+            <button class="arc-nav-btn arc-prev" id="arcPrevBtn" title="Previous News Card">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            
+            <div class="arc-carousel-stage" id="arcCarouselStage">
+              <!-- 3D Fan Arc News Cards dynamically injected by app.js -->
+            </div>
+
+            <button class="arc-nav-btn arc-next" id="arcNextBtn" title="Next News Card">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar & Refresh Stream -->
+        <div class="hero-search-wrapper">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search news by topic, keyword, or company..." autocomplete="off">
+            <button id="clearSearchBtn" class="clear-search-btn hidden" title="Clear search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <button class="refresh-stream-btn" id="refreshNewsBtn">
+            <i class="fa-solid fa-arrows-rotate"></i> REFRESH STREAM
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW SECTION (HOW IT WORKS - 3 STEPS) -->
+    <section id="workflow" class="workflow-section">
+      <div class="workflow-container">
+        <span class="mono-label orange">02 / HOW IT WORKS</span>
+        <h2 class="section-heading">THREE STEPS. ZERO NOISE.</h2>
+
+        <div class="workflow-grid">
+          <div class="workflow-card">
+            <span class="step-num">01</span>
+            <h3>SELECT YOUR SECTORS</h3>
+            <p>Choose the news sectors that matter most to you—Tech, Business, Science, World, or Culture. NewsNectar tailors your stream in your voice.</p>
+          </div>
+          <div class="workflow-card">
+            <span class="step-num">02</span>
+            <h3>AI PREPARES CAROUSEL OVERNIGHT</h3>
+            <p>While you sleep, NewsNectar scans global feeds, extracts key bullet points, generates visual banners, and prepares context for the AI Bot.</p>
+          </div>
+          <div class="workflow-card">
+            <span class="step-num">03</span>
+            <h3>READ, LISTEN & CHAT</h3>
+            <p>Wake up to your ready-to-read news carousel. Inspect bullet summaries, play text-to-speech audio, or ask the grounded AI Bot any question.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTOR PARTITIONS NAV BAR -->
+    <section class="sector-partition-section" id="sectors">
+      <div class="sector-container-wrapper">
+        <div class="sector-header-title">
+          <span class="pulse-square">■</span> FILTER STREAM BY SECTOR
+        </div>
+        <div class="sector-buttons-grid" id="sectorContainer">
+          <button class="sector-btn active" data-sector="all">ALL STREAMS</button>
+          <button class="sector-btn" data-sector="tech">🤖 TECH & AI</button>
+          <button class="sector-btn" data-sector="business">💼 BUSINESS & FINANCE</button>
+          <button class="sector-btn" data-sector="science">🔬 SCIENCE & SPACE</button>
+          <button class="sector-btn" data-sector="world">🌍 WORLD & CLIMATE</button>
+          <button class="sector-btn" data-sector="culture">🎬 CULTURE & MEDIA</button>
+          <button class="sector-btn" data-sector="sports">⚽ SPORTS & GAMING</button>
+          <button class="sector-btn" data-sector="health">⚕️ HEALTH & BIO</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN HONEYCOMB HEXAGONAL GRID SECTION -->
+    <section class="honeycomb-section" id="honeycomb">
+      <div class="section-title-bar">
+        <h2>HONEYCOMB STREAM <span class="count-badge" id="totalCountDisplay">0</span></h2>
+        <span class="active-filter-label" id="activeFilterBadge">Sector: All Streams</span>
+      </div>
+
+      <div class="honeycomb-container" id="honeycombContainer">
+        <!-- Dynamic Hexagon Grid Cards rendered by app.js -->
+        <div class="hex-skeleton-loader">
+          <div class="hex-skeleton-item"></div>
+          <div class="hex-skeleton-item"></div>
+          <div class="hex-skeleton-item"></div>
+          <div class="hex-skeleton-item"></div>
+          <div class="hex-skeleton-item"></div>
+          <div class="hex-skeleton-item"></div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-hex-icon"><i class="fa-solid fa-cube"></i></div>
+        <h3>NO NECTAR DROPS FOUND</h3>
+        <p>No news items match your current search or sector filter.</p>
+        <button class="primary-btn" id="resetFiltersBtn">RESET FILTERS</button>
+      </div>
+    </section>
+
+    <!-- FOOTER (SHOOKS STYLE) -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-row-top">
+          <a href="https://newsnectar.ai" target="_blank" rel="noreferrer" class="footer-mono-link">Powered by newsnectar.ai</a>
+          <span class="footer-dot">·</span>
+          <span class="footer-mono-text">AI News Manager <span class="highlight">Grounded v2.4</span></span>
+          <span class="footer-dot">·</span>
+          <a href="#" class="footer-mono-link">Privacy Policy</a>
+          <span class="footer-dot">·</span>
+          <a href="#" class="footer-mono-link">Data Deletion</a>
+        </div>
+        <p class="footer-copyright">© 2026 NEWSNECTAR • MADE WITH GROUNDED AI</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ARTICLE DETAIL MODAL WITH EMBEDDED AI ASSISTANT -->
+  <div class="modal-overlay hidden" id="articleModalOverlay">
+    <div class="article-modal" id="articleModal">
+      <!-- Modal Top Bar -->
+      <div class="modal-top-bar">
+        <div class="modal-sector-tag" id="modalSectorTag">
+          <span class="pulse-square">■</span> <span id="modalSectorName">TECH & AI</span>
+        </div>
+        <div class="modal-actions">
+          <button class="icon-btn" id="ttsAudioBtn" title="Listen to Summary (Audio)">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <button class="icon-btn" id="bookmarkArticleBtn" title="Bookmark Story">
+            <i class="fa-regular fa-bookmark"></i>
+          </button>
+          <button class="icon-btn" id="shareArticleBtn" title="Share Story">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+          <button class="icon-btn close-modal-btn" id="closeModalBtn" title="Close Modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body Split Grid -->
+      <div class="modal-body-container">
+        <!-- LEFT COLUMN: Article Content -->
+        <div class="article-content-column">
+          <div class="article-hero-banner" id="modalHeroBanner">
+            <img id="modalImage" src="" alt="News Image">
+            <div class="banner-overlay">
+              <span class="source-badge" id="modalSource">TechCrunch</span>
+              <span class="time-badge" id="modalTime">10 mins ago</span>
+              <span class="sentiment-badge" id="modalSentiment"><i class="fa-solid fa-chart-pie"></i> Neutral</span>
+            </div>
+          </div>
+
+          <h2 class="modal-article-title" id="modalTitle">News Headline Here</h2>
+
+          <!-- Nectar Extract Summary -->
+          <div class="nectar-summary-card">
+            <div class="summary-header">
+              <span class="pulse-square">■</span>
+              <h3>NECTAR EXTRACT <span class="sub-label">(Bite-Sized AI Summary)</span></h3>
+            </div>
+            <ul class="nectar-bullets-list" id="modalBulletsList"></ul>
+          </div>
+
+          <!-- Full Text Body -->
+          <div class="full-article-text" id="modalFullText"></div>
+
+          <!-- Source Attribution -->
+          <div class="article-source-footer">
+            <span>Read original full report on:</span>
+            <a href="#" id="modalSourceLink" target="_blank" rel="noopener noreferrer" class="source-external-link">
+              <span id="modalSourceDomain">Source Site</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Embedded AI Companion Chat -->
+        <div class="article-ai-column">
+          <div class="ai-panel-header">
+            <div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+            <div class="ai-title-info">
+              <h3>NECTAR AI COMPANION</h3>
+              <p>Ask anything about this news story</p>
+            </div>
+            <div class="ai-grounded-pill">
+              <i class="fa-solid fa-circle-check"></i> GROUNDED
+            </div>
+          </div>
+
+          <!-- Suggestion Chips -->
+          <div class="ai-quick-chips">
+            <button class="chip-btn" data-question="Give me a 3-bullet executive summary.">✨ 3-Bullet Summary</button>
+            <button class="chip-btn" data-question="Why is this story significant right now?">💡 Why it matters</button>
+            <button class="chip-btn" data-question="Explain this news like I am 5 years old.">👶 ELI5</button>
+            <button class="chip-btn" data-question="What are the potential future implications?">🚀 Future Impact</button>
+          </div>
+
+          <!-- Chat Messages Container -->
+          <div class="ai-chat-messages" id="chatMessages">
+            <div class="chat-message bot-message">
+              <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+              <div class="message-content">
+                <p>Hello! I am your <strong>Nectar AI Assistant</strong> for this story. Ask me any question or key implication!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Typing Indicator -->
+          <div class="chat-typing-indicator hidden" id="chatTyping">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <span>Nectar AI is synthesizing response...</span>
+          </div>
+
+          <!-- Chat Input -->
+          <form class="chat-input-form" id="chatForm">
+            <input type="text" id="chatInput" placeholder="Ask a question about this news..." autocomplete="off">
+            <button type="submit" id="chatSendBtn" class="chat-send-btn" title="Send Question">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-overlay hidden" id="settingsModalOverlay">
+    <div class="settings-modal">
+      <div class="settings-header">
+        <h3><i class="fa-solid fa-sliders"></i> NEWSNECTAR SETTINGS</h3>
+        <button class="icon-btn close-modal-btn" id="closeSettingsBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="settings-body">
+        <div class="setting-group">
+          <label for="apiKeyInput">Custom Gemini / OpenAI API Key (Optional)</label>
+          <p class="setting-desc">By default, NewsNectar uses built-in grounded AI synthesis. Enter an API key for live custom LLM calls.</p>
+          <input type="password" id="apiKeyInput" placeholder="sk-... or AIzaSy..." class="settings-input">
+        </div>
+        <div class="setting-group">
+          <label for="aiModelSelect">Selected AI Engine</label>
+          <select id="aiModelSelect" class="settings-select">
+            <option value="nectar-nlp">Nectar Grounded Neural Engine (Built-in)</option>
+            <option value="gemini-flash">Google Gemini Flash 1.5</option>
+            <option value="openai-gpt4o">OpenAI GPT-4o Mini</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings-footer">
+        <button class="secondary-btn" id="cancelSettingsBtn">CANCEL</button>
+        <button class="primary-btn" id="saveSettingsBtn">SAVE PREFERENCES</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="news-service.js"></script>
+  <script src="ai-bot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
